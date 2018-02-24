@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+  <h2><%= @batter.fname %> <%= @batter.lname %></h2>
+  <% @batter.attributes.each do |name, value| %>
+       <%= name %>: <%= value %><br />
+  <% end %>
+
+<p>
+<%= link_to 'Edit', edit_batter_path(@batter) %> |
+<%= link_to 'Back', batters_path %>
