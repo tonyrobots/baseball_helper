@@ -3,6 +3,18 @@ namespace :import do
   desc "TODO"
   task batters: :environment do
     filename = "HitterSalaries.csv"
+    filepath = base_dir + filename
+    puts "Importing #{filepath}..."
+    options = {}
+    #add some feedback like # of rows imported, etc
+    SmarterCSV.process(filepath, options) do |chunk|
+      # This will just add all the rows to what's already in the db. should either
+      # clear out first, or only add new items and update existing ones
+      # also, this is very slow - let's optimize!
+      chunk.each do |data_hash|
+        Batter.create( data_hash )
+      end
+    end
 
   end
 
