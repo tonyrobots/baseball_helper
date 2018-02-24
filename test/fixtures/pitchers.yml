@@ -1,0 +1,61 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  masterplayerid: 1
+  lname: MyString
+  fname: MyString
+  franchise: MyString
+  league: MyString
+  splitseasonid: 1
+  bats: MyString
+  throws: MyString
+  ip_162: 1
+  era: 9.99
+  erc: 9.99
+  oav: 9.99
+  whip: 9.99
+  k: 1
+  hr9: 9.99
+  bb: 1
+  era_norm: 9.99
+  erc_norm: 9.99
+  oav_norm: 9.99
+  whip_norm: 9.99
+  hr_norm: 9.99
+  bb_norm: 9.99
+  k9_norm: 9.99
+  fieldinggrades_p: MyString
+  firstseason: false
+  lastseason: false
+  basesalary: 1
+  salary: 1
+
+two:
+  masterplayerid: 1
+  lname: MyString
+  fname: MyString
+  franchise: MyString
+  league: MyString
+  splitseasonid: 1
+  bats: MyString
+  throws: MyString
+  ip_162: 1
+  era: 9.99
+  erc: 9.99
+  oav: 9.99
+  whip: 9.99
+  k: 1
+  hr9: 9.99
+  bb: 1
+  era_norm: 9.99
+  erc_norm: 9.99
+  oav_norm: 9.99
+  whip_norm: 9.99
+  hr_norm: 9.99
+  bb_norm: 9.99
+  k9_norm: 9.99
+  fieldinggrades_p: MyString
+  firstseason: false
+  lastseason: false
+  basesalary: 1
+  salary: 1
