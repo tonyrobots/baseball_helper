@@ -16,6 +16,7 @@ namespace :import do
     SmarterCSV.process(filepath, options) do |chunk|
       # This will just add all the rows to what's already in the db. should either
       # clear out first, or only add new items and update existing ones
+      # also, this is very slow - let's optimize!
       chunk.each do |data_hash|
         Pitcher.create( data_hash )
       end
