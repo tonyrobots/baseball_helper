@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :batters
   get 'batters/salary/:salary', to: 'batters#show_by_salary'
   resources :pitchers
+  get 'pitchers/salary/:salary', to: 'pitchers#show_by_salary'
+
 
 
   get 'search', to: 'search#index'

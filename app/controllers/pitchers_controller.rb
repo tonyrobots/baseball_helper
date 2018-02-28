@@ -4,7 +4,7 @@ class PitchersController < ApplicationController
   # GET /pitchers
   # GET /pitchers.json
   def index
-    @pitchers = Pitcher.all
+    @players = Pitcher.limit(100)
   end
 
   # GET /pitchers/1
