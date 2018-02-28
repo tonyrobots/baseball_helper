@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_pitcher_path(@pitcher) %> |
+  <h2><%= @player.fname %> <%= @player.lname %></h2>
+  <% @player.attributes.each do |name, value| %>
+       <%= name %>: <%= value %><br />
+  <% end %>
+
+<p>
+<%= link_to 'Edit', edit_pitcher_path(@batter) %> |
 <%= link_to 'Back', pitchers_path %>

@@ -12,6 +12,18 @@ class PitchersController < ApplicationController
   def show
   end
 
+  # GET /pitchers/salary/xxxxxxx
+  def show_by_salary
+    #only returns one, should fix
+    @players = Pitcher.where(salary:params[:salary]).distinct
+    if @players.count > 1
+      render :index
+    elsif @players.count == 1
+      @player = @players.first
+      render :show
+    end
+  end
+
   # GET /pitchers/new
   def new
     @pitcher = Pitcher.new
