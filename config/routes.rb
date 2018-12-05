@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :batters
   resources :pitchers
+  get 'pitchers/salary/:salary', to: 'pitchers#show_by_salary'
+
 
 
   get 'search', to: 'search#index'
