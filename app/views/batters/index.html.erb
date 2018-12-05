@@ -2,6 +2,11 @@
 
 <h1>Batters</h1>
 
+<%= form_tag(batters_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :salary, params[:salary], placeholder: "Salary" %>
+    <%= submit_tag "Search by Salary", :name => nil %>
+<% end %>
+
 <table>
   <thead>
     <tr>

@@ -4,7 +4,10 @@ class BattersController < ApplicationController
   # GET /batters
   # GET /batters.json
   def index
-    @batters = Batter.all
+    @batters = Batter.limit(100)
+    if params[:salary]
+      show_by_salary
+    end
   end
 
   # GET /batters/1
@@ -15,12 +18,13 @@ class BattersController < ApplicationController
   # GET /batters/salary/xxxxxxx
   def show_by_salary
     #only returns one, should fix
-    @batters = Batter.where(salary:params[:salary]).distinct
-    if @batters.count > 1
-      render :index
-    elsif @batters.count == 1
+    @batters = Batter.where(salary:params[:salary].gsub(",","").to_i).distinct
+    if @batters.count == 1
       @batter = @batters.first
       render :show
+    else
+      @salaryForm = true
+      render :index
     end
   end
 

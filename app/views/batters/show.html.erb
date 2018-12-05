@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-  <h2><%= @batter.fname %> <%= @batter.lname %></h2>
+  <h1><div class=""><%= @batter.position %></div><%= @batter.fname %> <%= @batter.lname %> (<%= @batter.season %>)</h1>
+
+  <p><%= @batter.franchise %> bats: <%= @batter.bats %>, throws: <%= @batter.throws %></p>
+
+  <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Batting Average</div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @batter.ba %></h4>
+    <p class="card-text">AVG </p>
+  </div>
+</div>
+
   <% @batter.attributes.each do |name, value| %>
        <%= name %>: <%= value %><br />
   <% end %>

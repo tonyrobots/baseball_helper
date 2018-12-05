@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+  <h1><div class=""></div><%= @pitcher.throws %>HP - <%= @pitcher.fname %> <%= @pitcher.lname %> (<%= @pitcher.season %>)</h1>
+
+  <p><%= @pitcher.franchise %> bats: <%= @pitcher.bats %>, throws: <%= @pitcher.throws %></p>
+
+  <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header">Basic Stats</div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @pitcher.ip_162 %></h4>
+    <p class="card-text">IP per 162</p>
+    <h4 class="card-title"><%= @pitcher.erc_norm %></h4>
+    <p class="card-text">ERC#</p>
+    <h4 class="card-title"><%= @pitcher.whip_norm %></h4>
+    <p class="card-text">WHIP#</p>
+  </div>
+</div>
+
+  <% @pitcher.attributes.each do |name, value| %>
+       <%= name %>: <%= value %><br />
+  <% end %>
+
+<p>
 <%= link_to 'Edit', edit_pitcher_path(@pitcher) %> |
 <%= link_to 'Back', pitchers_path %>

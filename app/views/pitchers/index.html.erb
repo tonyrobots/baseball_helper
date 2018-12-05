@@ -2,6 +2,11 @@
 
 <h1>Pitchers</h1>
 
+<%= form_tag(pitchers_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :salary, params[:salary], placeholder: "Salary" %>
+    <%= submit_tag "Search by Salary", :name => nil %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -12,9 +17,9 @@
   <tbody>
     <% @pitchers.each do |pitcher| %>
       <tr>
+        <td><%= pitcher.fname %> <%= pitcher.lname %> (<%=pitcher.season %>)</td>
+
         <td><%= link_to 'Show', pitcher %></td>
-        <td><%= link_to 'Edit', edit_pitcher_path(pitcher) %></td>
-        <td><%= link_to 'Destroy', pitcher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

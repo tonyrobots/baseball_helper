@@ -4,13 +4,31 @@ class PitchersController < ApplicationController
   # GET /pitchers
   # GET /pitchers.json
   def index
-    @pitchers = Pitcher.all
+    @pitchers = Pitcher.limit(100)
+    if params[:salary]
+      show_by_salary
+    end
   end
 
   # GET /pitchers/1
   # GET /pitchers/1.json
   def show
   end
+
+
+  # GET /pitchers/salary/xxxxxxx
+  def show_by_salary
+    #TODO: copypasta from batters, should figure out how to share code
+    @pitchers = Pitcher.where(salary:params[:salary].gsub(",","").to_i).distinct
+    if @pitchers.count == 1
+      @pitcher = @pitchers.first
+      render :show
+    else
+      @salaryForm = true
+      render :index
+    end
+  end
+
 
   # GET /pitchers/new
   def new
