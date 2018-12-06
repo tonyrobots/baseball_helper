@@ -15,16 +15,13 @@
   </thead>
 
   <tbody>
-    <% @players.each do |player| %>
+    <% @pitchers.each do |pitcher| %>
       <tr>
-        <td><%= pitcher.fname %> <%= pitcher.lname %> (<%=pitcher.season %>)</td>
+        <td><%= link_to pitcher.fname + " " + pitcher.lname, pitcher %> (<%=pitcher.season %> <%= pitcher.franchise %>) - <%= pitcher.ip_162 %> IPs</td>
 
-        <td><%= link_to 'Show', pitcher %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Pitcher', new_pitcher_path %>

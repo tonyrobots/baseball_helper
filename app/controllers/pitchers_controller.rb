@@ -1,33 +1,55 @@
 class PitchersController < ApplicationController
-  before_action :set_pitcher, only: [:show, :edit, :update, :destroy]
+  before_action :set_pitcher, only: [:edit, :update, :destroy]
 
   # GET /pitchers
   # GET /pitchers.json
   def index
     @pitchers = Pitcher.limit(100)
     if params[:salary]
-      show_by_salary
+      show
     end
   end
 
   # GET /pitchers/1
   # GET /pitchers/1.json
   def show
-  end
-
-
-  # GET /pitchers/salary/xxxxxxx
-  def show_by_salary
     #TODO: copypasta from batters, should figure out how to share code
-    @pitchers = Pitcher.where(salary:params[:salary].gsub(",","").to_i).distinct
-    if @pitchers.count == 1
-      @pitcher = @pitchers.first
-      render :show
-    else
-      @salaryForm = true
-      render :index
+    # Feels like show and search shouldn't be munged together like this
+    # also using "salary" in place of generalized search term
+    if params[:salary]
+      search = params[:salary]
+
+      if regex_is_number? search
+        @pitchers = Pitcher.where(salary:search.gsub(",","").to_i).distinct
+      else
+        # note this currently requires EXACT match of last name, should improve it
+        @pitchers = Pitcher.where(lname:search).order(:season, salary: :desc)
+      end
+      if @pitchers.count == 1
+        @pitcher = @pitchers.first
+      else
+        @salaryForm = true
+        render :index
+      end
+
+    elsif params[:id]
+      set_pitcher
     end
   end
+
+
+  # # GET /pitchers/salary/xxxxxxx
+  # def show_by_salary
+  #   #TODO: copypasta from batters, should figure out how to share code
+  #   @pitchers = Pitcher.where(salary:params[:salary].gsub(",","").to_i).distinct
+  #   if @pitchers.count == 1
+  #     @pitcher = @pitchers.first
+  #     render :show
+  #   else
+  #     @salaryForm = true
+  #     render :index
+  #   end
+  # end
 
 
   # GET /pitchers/new

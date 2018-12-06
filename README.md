@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Stuff to do:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Lots of clean up, I'm rusty and not making the best structural decisions ATM
+2. Add "roster" entity -- so users can create rosters and have quick access to their players
+3. This would be best served by having users/auth
+4. distinguish between split seasons/full seasons on player index
+5. Supplement player database with additional/external data (e.g. Games Played!)
+6. currently Batters and pitchers are completely separate entities -- find way to share better, e.g. have Player object they each inherit from

@@ -1,32 +1,43 @@
 class BattersController < ApplicationController
-  before_action :set_batter, only: [:show, :edit, :update, :destroy]
+  before_action :set_batter, only: [:edit, :update, :destroy]
 
   # GET /batters
   # GET /batters.json
   def index
     @batters = Batter.limit(100)
     if params[:salary]
-      show_by_salary
+      show
     end
   end
 
   # GET /batters/1
   # GET /batters/1.json
   def show
-  end
+    #TODO: copypasta from batters, should figure out how to share code
+    # Feels like show and search shouldn't be munged together like this
+    # also using "salary" in place of generalized search term
+    if params[:salary]
+      search = params[:salary]
 
-  # GET /batters/salary/xxxxxxx
-  def show_by_salary
-    #only returns one, should fix
-    @batters = Batter.where(salary:params[:salary].gsub(",","").to_i).distinct
-    if @batters.count == 1
-      @batter = @batters.first
-      render :show
-    else
-      @salaryForm = true
-      render :index
+      if regex_is_number? search
+        @batters = Batter.where(salary:search.gsub(",","").to_i).distinct
+      else
+        # note this currently requires EXACT match of last name, should improve it
+        @batters = Batter.where(lname:search).order(:season, salary: :desc)
+      end
+      if @batters.count == 1
+        @batter = @batters.first
+      else
+        @salaryForm = true
+        render :index
+      end
+
+    elsif params[:id]
+      set_batter
     end
   end
+
+
 
   # GET /batters/new
   def new

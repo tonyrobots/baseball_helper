@@ -7,13 +7,28 @@
   <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
   <div class="card-header">Basic Stats</div>
   <div class="card-body">
-    <h4 class="card-title"><%= @pitcher.ip_162 %></h4>
     <p class="card-text">IP per 162</p>
-    <h4 class="card-title"><%= @pitcher.erc_norm %></h4>
+    <h4 class="card-title"><%= @pitcher.ip_162 %></h4>
     <p class="card-text">ERC#</p>
-    <h4 class="card-title"><%= @pitcher.whip_norm %></h4>
+    <h4 class="card-title"><%= @pitcher.erc_norm %></h4>
     <p class="card-text">WHIP#</p>
+    <h4 class="card-title"><%= @pitcher.whip_norm %></h4>
   </div>
+
+  <div class="card-header">Fatigue</div>
+  <p class="card-text">Max Pitches per Inning</p>
+  <h4 class="card-title"><%= pitches_per_inning(@pitcher) %></h4>
+  <p class="card-text">Max Pitches Total</p>
+  <h4 class="card-title"><%= pitches_max(@pitcher) %></h4>
+  <p class="card-text">Max Pitches/game</p>
+  <h4 class="card-title"><%= pitches_max(@pitcher)/@pitcher. %></h4>
+
+  <p class="card-text">Pitches/game - Starter - 4M rotation </p>
+  <h4 class="card-title"><%= (pitches_max(@pitcher)/40.5).round(2) %></h4>
+  <p class="card-text">Pitches/game - Starter - 3M rotation </p>
+  <h4 class="card-title"><%= (pitches_max(@pitcher)/54).round(2) %></h4>
+
+
 </div>
 
   <% @pitcher.attributes.each do |name, value| %>

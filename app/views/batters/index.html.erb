@@ -17,9 +17,8 @@
   <tbody>
     <% @batters.each do |batter| %>
       <tr>
-        <td><%= batter.fname %> <%= batter.lname %> (<%=batter.season %>)</td>
+        <td><%= link_to batter.fname + " " + batter.lname, batter %> (<%=batter.season %> <%= batter.franchise %>) - <%= batter.pa_162 %> PA/162</td>
 
-        <td><%= link_to 'Show', batter %></td>
         <!-- <td><%= link_to 'Edit', edit_batter_path(batter) %></td>
         <td><%= link_to 'Destroy', batter, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
@@ -28,5 +27,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Batter', new_batter_path %>
